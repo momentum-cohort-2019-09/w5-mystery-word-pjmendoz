@@ -5,7 +5,7 @@ def my_word_list(words):
     list_of_words = words.split()
     return list_of_words
 
-#grabbing a word from the list that is chosen randomly
+#grabbing a word from the list that is chosen randomly and finding out the length of the word
 def get_words(wordlist): 
     random_word = random.choice(wordlist)
     return random_word
