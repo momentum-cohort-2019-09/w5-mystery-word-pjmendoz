@@ -13,17 +13,29 @@ def my_word_list(words):
 
 # 3. Entering Game
 def entering_game():
-    intro = input("Welcome to my game! If you want to play, press 'y', if not, press 'n'.")
-    print(intro)
+    permission = input("?¿? MYSTERY WORD ?¿? If you want to play, press 'y', if not, press command+D").lower()
+    if permission == "y": 
+        difficulty_level = input("Please Select Level (e = easy, m = moderate, h = hard):").lower()
+        if difficulty_level == "e":
+            print("Welcome to the Easy Level")
+        if difficulty_level == "m":
+            print("Welcome to the Moderate Level")
+        if difficulty_level == "h":
+            print("Welcome to the Hard Level")
+    else: 
+        print("Please respond with a valid option.")        
 
-# 4. Grabbing a word from the list that is chosen randomly and finding out the length of the word. Afterwards taking each letter in length of word and replacing it with a blank. 
+# 4. Choosing a level
+
+
+# 5. Grabbing a word from the list that is chosen randomly and finding out the length of the word. Afterwards taking each letter in length of word and replacing it with a blank. 
 def get_words(wordlist): 
     random_word = random.choice(wordlist)
     word_length = ([" _ " * len(random_word)])
     print(word_length)
     return random_word    
 
-#5. pushing letters in display
+#6. pushing letters in display
 def display_letters(word, correct_guesses):
     display_word = "" 
 
@@ -35,7 +47,7 @@ def display_letters(word, correct_guesses):
     print(display_word)        
    
     
-#6. Guessing a letter 
+#7. Guessing a letter 
 def guess_letter(word, incorrect_guesses, correct_guesses): 
     guessed_letter = input("Guess a letter:")
 
@@ -50,7 +62,7 @@ def guess_letter(word, incorrect_guesses, correct_guesses):
     return correct_guesses, incorrect_guesses
      
 
-# 7. This is the whole game 
+# 8. This is the whole game 
 def playing_game(word):
     is_playing = True 
     incorrect_guesses = []
