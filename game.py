@@ -72,7 +72,7 @@ def display_letters(word, correct_guesses):
    
     
 #7. Guessing a letter 
-def guess_letter(word, incorrect_guesses, correct_guesses): 
+def guess_letter(word, incorrect_guesses, correct_guesses, lives): 
     guessed_letter = input("Guess a letter:")
 
     # Check if the letter(s) you've guessed are in the word you're guessing  
@@ -85,9 +85,13 @@ def guess_letter(word, incorrect_guesses, correct_guesses):
     elif guessed_letter in word: 
         correct_guesses.append(guessed_letter)
         print(f"Correct! {correct_guesses}")
+    elif guessed_letter in incorrect_guesses: 
+        print("You already guessed that letter. Try again.")
     else:
         incorrect_guesses.append(guessed_letter)
-        print(f"Try again! {incorrect_guesses}")
+        lives -= 1
+        print(f"Wrong answer! Try again!{incorrect_guesses}")
+        print(f"You now have {lives} lives left.")
     display_letters(word, correct_guesses)   
     return correct_guesses, incorrect_guesses
      
@@ -99,7 +103,7 @@ def player_won(word, correct_guesses):
     return True  
 
 
-    # return all(letter in correct_guesses for letter in word)      
+# return all(letter in correct_guesses for letter in word)      
 
 # 8. This is the whole game 
 def playing_game():
@@ -108,9 +112,10 @@ def playing_game():
     correct_guesses = []
     difficulty = entering_game()
     word = get_words(level_word(print_my_game("words.txt"), difficulty))
+    lives = 8 
 
     while is_playing and len(incorrect_guesses) < 8:
-        guess_letter(word, incorrect_guesses, correct_guesses) 
+        guess_letter(word, incorrect_guesses, correct_guesses,lives) 
         if player_won(word, correct_guesses): 
             is_playing = False
             print("You won beautiful!") 
