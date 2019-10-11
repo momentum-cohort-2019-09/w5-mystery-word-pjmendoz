@@ -92,6 +92,15 @@ def guess_letter(word, incorrect_guesses, correct_guesses):
     return correct_guesses, incorrect_guesses
      
 
+def player_won(word, correct_guesses):
+    for letter in word: 
+        if letter not in correct_guesses:
+            return False
+    return True  
+
+
+    # return all(letter in correct_guesses for letter in word)      
+
 # 8. This is the whole game 
 def playing_game():
     is_playing = True 
@@ -100,9 +109,11 @@ def playing_game():
     difficulty = entering_game()
     word = get_words(level_word(print_my_game("words.txt"), difficulty))
 
-
     while is_playing and len(incorrect_guesses) < 8:
         guess_letter(word, incorrect_guesses, correct_guesses) 
+        if player_won(word, correct_guesses): 
+            is_playing = False
+            print("You won beautiful!") 
     print("Game Over!")    
 
 playing_game()
