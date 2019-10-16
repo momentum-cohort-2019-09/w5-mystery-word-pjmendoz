@@ -114,7 +114,7 @@ def playing_game():
         guess_letter(word, incorrect_guesses, correct_guesses) 
         if player_won(word, correct_guesses): 
             is_playing = False
-            print("You won beautiful!") 
+            print("You won you intellectual bean!") 
     print("Game Over!")    
 
 playing_game()
