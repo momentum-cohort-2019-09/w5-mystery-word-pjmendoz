@@ -10,5 +10,5 @@
 # Creating guessing portion of game based on the level that the user chose -- Done
 # Creating easy, medium and hard mode display -- Done
 # Show you lose or won if user guessed too many times -- Done
-# Determine how many guesses a user can have and minus any that they have lossed due to them guessing wrong answer
+# Determine how many guesses a user can have and minus any that they have lossed due to them guessing wrong answer -- Done
 

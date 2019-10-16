@@ -33,7 +33,6 @@ def level_word(words, difficulty):
     moderate_mode = []
     hard_mode = []
 
-
     for word in words: 
         if len(word) >= 4 and len(word) <=6:
             easy_mode.append(word)
@@ -45,17 +44,16 @@ def level_word(words, difficulty):
         index = random.randrange(len(easy_mode) + 1)
         return easy_mode        
     elif difficulty == "m":
-        index = random.randrange(len(easy_mode) + 1)
+        index = random.randrange(len(moderate_mode) + 1)
         return moderate_mode  
     elif difficulty == "h":
-        index = random.randrange(len(easy_mode) + 1)
+        index = random.randrange(len(hard_mode) + 1)
         return hard_mode     
 
 # 5. Grabbing a word from the list that is chosen randomly and finding out the length of the word. Afterwards taking each letter in length of word and replacing it with a blank. 
 def get_words(wordlist): 
     random_word = random.choice(wordlist).lower()
     word_length = ([" _ " * len(random_word)])
-    print(random_word)
     print(word_length)
     return random_word    
 
@@ -89,7 +87,7 @@ def guess_letter(word, incorrect_guesses, correct_guesses, lives):
         print("You already guessed that letter. Try again.")
     else:
         incorrect_guesses.append(guessed_letter)
-        lives -= 1
+        lives = 8 - len(incorrect_guesses)
         print(f"Wrong answer! Try again!{incorrect_guesses}")
         print(f"You now have {lives} lives left.")
     display_letters(word, correct_guesses)   
@@ -101,7 +99,6 @@ def player_won(word, correct_guesses):
         if letter not in correct_guesses:
             return False
     return True  
-
 
 # return all(letter in correct_guesses for letter in word)      
 
