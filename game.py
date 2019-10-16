@@ -2,7 +2,7 @@ import random
 import string
 
 # 1. Reads my file
-def print_my_game(filename): 
+def read_word_list(filename): 
     with open(filename) as file:   
         game = file.read()
         return my_word_list(game)
@@ -108,7 +108,7 @@ def playing_game():
     incorrect_guesses = []
     correct_guesses = []
     difficulty = entering_game()
-    word = get_words(level_word(print_my_game("words.txt"), difficulty))
+    word = get_words(level_word(read_word_list("words.txt"), difficulty))
 
     while is_playing and len(incorrect_guesses) < 8:
         guess_letter(word, incorrect_guesses, correct_guesses) 
